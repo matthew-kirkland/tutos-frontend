@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+#root {
+  font-family: "Inter";
+}
+
+@utility bg-theme {
+  background-color: oklch(0.1177 0.0815 264.05);
+}
+
+@utility primary-hover {
+  background-color: oklch(0.4033 0.0381 253.04);
+}
