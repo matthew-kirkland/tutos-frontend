@@ -1,12 +1,17 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
-import { Navbar } from './components/navbar/Navbar'
+import { Routes, Route } from 'react-router-dom'
+import { Navbar } from './component/navbar/Navbar'
+import { LandingPage } from './page/LandingPage'
 
 function App() {
   return (
-    <Navbar />
+    <div className="flex flex-col h-dvh">
+      <Navbar />
+      <main className="flex flex-col h-full mt-[64px] bg-gray-50">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+        </Routes>
+      </main>
+    </div>
   )
 }
 
