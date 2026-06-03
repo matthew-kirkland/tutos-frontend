@@ -1,4 +1,3 @@
-import { Button } from "../buttons/Button";
 import { NavbarContentGroup } from "./NavbarContentGroup";
 import logo from "../../assets/logo.svg";
 

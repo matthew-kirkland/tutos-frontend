@@ -13,6 +13,10 @@ html, body, #root {
   color: #686DE0;
 }
 
+@utility border-theme {
+  border-color: #686DE0;
+}
+
 @utility primary-hover {
   background-color: #555AB8;
 }
