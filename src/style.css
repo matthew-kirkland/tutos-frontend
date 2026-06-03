@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+html, body, #root {
+  height: 100%;
+  font-family: "Inter";
+}
+
+@utility bg-theme {
+  background-color: #686DE0;
+}
+
+@utility text-theme {
+  color: #686DE0;
+}
+
+@utility border-theme {
+  border-color: #686DE0;
+}
+
+@utility primary-hover {
+  background-color: #555AB8;
+}
+
+@utility secondary-hover {
+  background-color: #F3F4F6;
+}
