@@ -5,10 +5,25 @@ const sizeMap = {
   "xl": "min-w-64 py-2 px-6 text-sm"
 };
 
-export const SecondaryButton = ({width, text, onClick, isLink}) => {
+const baseClass = (size) => {
+  return `flex justify-center items-center rounded-md cursor-pointer ${sizeMap[size]} bg-white text-theme hover:secondary-hover mb-3`;
+};
+
+export const SecondaryButton = ({type, size, text, onClick, disabled, isLink, href, target}) => {
   return (
-    <button className={`flex justify-center items-center rounded-md cursor-pointer ${sizeMap[size]} bg-white text-theme hover:secondary-hover mb-3`} onClick={onClick}>
+    isLink
+    ?
+      <a
+        className={baseClass(size)}
+        href={href}
+        target={target}
+        rel={target === "_blank" ? "noreferrer" : undefined}
+      >
+        {text}
+      </a>
+    :
+    <button type={type} disabled={disabled} className={baseClass(size)} onClick={onClick}>
       {text}
     </button>
-  )
+  );
 };
