@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { FormField } from "../component/form/FormField";
 import { PrimaryButton } from "../component/buttons/PrimaryButton";
 import { useNavigate } from "react-router-dom";
 import { requestPost } from "../helpers";
+import { AuthContext } from "../context/AuthContext";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
+  const {token, login, logout} = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const disabled = email.length <= 0 || password.length <= 0;
@@ -18,6 +20,7 @@ export const LoginPage = () => {
 
     try {
       const data = await requestPost("/auth/login", body);
+      login(data.jwt);
       navigate("/dashboard");
     } catch (e) {
       console.log(e);
