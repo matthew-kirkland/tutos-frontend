@@ -13,7 +13,7 @@ export const Button = ({className, type, variant, onClick, disabled, isLink, hre
     ?
       <Link
         className={cn(variantMap[variant], className)}
-        href={href}
+        to={href}
         target={target}
         rel={target === "_blank" ? "noreferrer" : undefined}
       >
