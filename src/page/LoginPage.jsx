@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
 import { FormField } from "../component/form/FormField";
-import { PrimaryButton } from "../component/buttons/PrimaryButton";
+import { Button } from "../component/buttons/Button";
 import { useNavigate } from "react-router-dom";
-import { requestPost } from "../helpers";
+import { requestPost } from "../utils/helpers.js";
 import { AuthContext } from "../context/AuthContext";
 
 export const LoginPage = () => {
@@ -47,13 +47,15 @@ export const LoginPage = () => {
             value={password}
             onChangeFn={setPassword}
           />
-          <PrimaryButton
+          <Button
+            className="flex justify-center ites-center rounded-md cursor-pointer w-full py-2 px-4 text-sm"
             type="submit"
-            size="fill"
-            text="Login"
+            variant="primary"
             onClick={() => {}}
             disabled={disabled}
-          />
+          >
+            Login
+          </Button>
         </form>
       </div>
     </div>
