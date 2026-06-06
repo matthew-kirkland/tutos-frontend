@@ -1,9 +1,11 @@
+import { jwtDecode } from "jwt-decode";
 import { createContext, useState } from "react";
 
 export const AuthContext = createContext(null);
 
 export const AuthProvider = ({children}) => {
   const [token, setToken] = useState(sessionStorage.getItem("token") ?? "");
+  const roles = token ? jwtDecode(token).roles : "";
   const login = (token) => {
     sessionStorage.setItem("token", token);
     setToken(token);
@@ -15,7 +17,7 @@ export const AuthProvider = ({children}) => {
   };
 
   return (
-    <AuthContext.Provider value={{token, login, logout}}>
+    <AuthContext.Provider value={{token, roles, login, logout}}>
       {children}
     </AuthContext.Provider>
   );
