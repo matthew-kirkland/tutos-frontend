@@ -3,6 +3,8 @@ import { Navbar } from './component/navbar/Navbar'
 import { LandingPage } from './page/LandingPage'
 import { LoginPage } from './page/LoginPage'
 import { Dashboard } from './page/Dashboard'
+import { UsersPage } from './page/Centre/UsersPage'
+import { ClassesPage } from './page/Centre/ClassesPage'
 
 function App() {
   return (
@@ -13,10 +15,12 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/users" element={<UsersPage />} />
+          <Route path="/classes" element={<ClassesPage />} />
         </Routes>
       </main>
     </div>
-  )
-}
+  );
+};
 
 export default App

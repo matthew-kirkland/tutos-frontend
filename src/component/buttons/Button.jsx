@@ -4,7 +4,7 @@ import { cn } from "../../utils/cn.js";
 const variantMap = {
   "primary": "bg-theme text-white hover:primary-hover",
   "secondary": "bg-white text-theme hover:secondary-hover",
-  "transparent": "bg-transparent text-theme hover:bg-gray-100"
+  "transparent": "bg-transparent text-black hover:bg-gray-100"
 };
 
 export const Button = ({className, type, variant, onClick, disabled, isLink, href, target, children}) => {
