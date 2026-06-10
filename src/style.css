@@ -9,6 +9,10 @@ html, body, #root {
   background-color: #686DE0;
 }
 
+@utility bg-theme-disabled {
+  background-color: #74808C;
+}
+
 @utility text-theme {
   color: #686DE0;
 }
@@ -23,4 +27,40 @@ html, body, #root {
 
 @utility secondary-hover {
   background-color: #F3F4F6;
+}
+
+/* --- FullCalendar customisation ---
+   Use @apply to pull in Tailwind utilities (including your custom @utility classes).
+   If an override loses to FullCalendar's own rules, bump specificity by repeating
+   the .fc prefix (e.g. .fc.fc .fc-button-primary) or append ! for !important
+   (e.g.  bg-theme!  — Tailwind v4 syntax). */
+
+.fc .fc-toolbar-title {
+  @apply text-2xl font-bold text-gray-800;
+}
+
+/* Toolbar buttons use your brand colour */
+.fc .fc-button-primary {
+  @apply bg-theme border-theme;
+}
+
+.fc .fc-button-primary:not(:disabled):hover,
+.fc .fc-button-primary:not(:disabled):active,
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+  @apply primary-hover border-[#555AB8];
+}
+
+/* Day-of-week header row */
+.fc .fc-col-header-cell {
+  @apply text-sm font-semibold text-black uppercase tracking-wide;
+}
+
+/* Today cell — override FullCalendar's default yellow */
+.fc .fc-daygrid-day.fc-day-today {
+  @apply bg-[#E6E7FF];
+}
+
+/* Day numbers */
+.fc .fc-daygrid-day-number {
+  @apply text-sm text-gray-700;
 }

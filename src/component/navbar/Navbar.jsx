@@ -53,7 +53,7 @@ export const Navbar = () => {
         {
           (token !== "") &&
           <Button
-            className="flex justify-center items-center rounded-md cursor-pointer min-w-24 py-2 px-2 text-sm text-white underline underline-offset-2"
+            className="flex justify-center items-center rounded-md cursor-pointer min-w-24 py-2 px-2 text-md text-white underline underline-offset-2"
             isLink={true}
             href={"/dashboard"}
           >
@@ -64,7 +64,7 @@ export const Navbar = () => {
           roles.split(" ").some(r => adminRender.includes(r)) &&
           <div className="relative" ref={centreRef}>
             <Button
-              className="flex justify-center items-center rounded-md cursor-pointer min-w-24 py-2 px-2 text-sm text-white underline underline-offset-2"
+              className="flex justify-center items-center rounded-md cursor-pointer min-w-24 py-2 px-2 text-md text-white underline underline-offset-2"
               onClick={toggleCentreDropdown}
             >
               Centre
@@ -73,7 +73,7 @@ export const Navbar = () => {
               showCentreDropdown &&
               <div className="absolute top-full left-0 mt-1 bg-white rounded-md shadow-md flex flex-col min-w-32 z-50 overflow-hidden">
                 <Button
-                  className="px-4 py-2 text-sm"
+                  className="px-4 py-2 text-md"
                   variant="transparent"
                   onClick={toggleCentreDropdown}
                   isLink={true}
@@ -82,7 +82,7 @@ export const Navbar = () => {
                   Users
                 </Button>
                 <Button
-                  className="px-4 py-2 text-sm"
+                  className="px-4 py-2 text-md"
                   variant="transparent"
                   onClick={toggleCentreDropdown}
                   isLink={true}
@@ -91,7 +91,7 @@ export const Navbar = () => {
                   Classes
                 </Button>
                 <Button
-                  className="px-4 py-2 text-sm"
+                  className="px-4 py-2 text-md"
                   variant="transparent"
                   onClick={toggleCentreDropdown}
                   isLink={true}
@@ -107,7 +107,7 @@ export const Navbar = () => {
           roles.split(" ").some(r => adminRender.includes(r)) &&
           <div className="relative" ref={hrRef}>
             <Button
-              className="flex justify-center items-center rounded-md cursor-pointer min-w-24 py-2 px-2 text-sm text-white underline underline-offset-2"
+              className="flex justify-center items-center rounded-md cursor-pointer min-w-24 py-2 px-2 text-md text-white underline underline-offset-2"
               onClick={toggleHRDropdown}
             >
               HR
@@ -116,7 +116,7 @@ export const Navbar = () => {
               showHRDropdown &&
               <div className="absolute top-full left-0 mt-1 bg-white rounded-md shadow-md flex flex-col min-w-32 z-50 overflow-hidden">
                 <Button
-                  className="px-4 py-2 text-sm"
+                  className="px-4 py-2 text-md"
                   variant="transparent"
                   onClick={toggleHRDropdown}
                   isLink={true}
