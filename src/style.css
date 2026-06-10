@@ -64,3 +64,14 @@ html, body, #root {
 .fc .fc-daygrid-day-number {
   @apply text-sm text-gray-700;
 }
+
+/* Truncate long event titles in both month and time grid views */
+.fc .fc-event-title {
+  @apply truncate;
+}
+
+/* Pointer cursor on events — cursor is inherited so this covers all child text nodes */
+.fc .fc-event,
+.fc .fc-event * {
+  cursor: pointer;
+}
