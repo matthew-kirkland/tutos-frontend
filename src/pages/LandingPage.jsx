@@ -1,4 +1,4 @@
-import { PrimaryButton } from "../component/buttons/PrimaryButton";
+import { Button } from "../components/buttons/Button";
 
 export const LandingPage = () => {
   return (
@@ -8,8 +8,15 @@ export const LandingPage = () => {
       </div>
       <div className="w-1/2 h-full flex flex-col justify-center items-center">
         <h1 className="text-theme text-4xl font-medium tracking-wide pb-8">Welcome</h1>
-        <PrimaryButton size="xl" text="Login" isLink={true} href="/login" />
+        <Button
+          className="flex justify-center items-center rounded-md cursor-pointer min-w-64 py-2 px-4 text-sm"
+          variant="primary"
+          isLink={true}
+          href="/login"
+        >
+          Login
+        </Button>
       </div>
     </div>
   );
-}
+};
