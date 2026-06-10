@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router-dom'
-import { Navbar } from './component/navbar/Navbar'
-import { LandingPage } from './page/LandingPage'
-import { LoginPage } from './page/LoginPage'
-import { Dashboard } from './page/Dashboard'
-import { UsersPage } from './page/Centre/UsersPage'
-import { ClassesPage } from './page/Centre/ClassesPage'
-import { CalendarPage } from './page/Centre/CalendarPage'
+import { Navbar } from './components/navbar/Navbar'
+import { LandingPage } from './pages/LandingPage'
+import { LoginPage } from './pages/LoginPage'
+import { Dashboard } from './pages/Dashboard'
+import { UsersPage } from './pages/Centre/UsersPage'
+import { ClassesPage } from './pages/Centre/ClassesPage'
+import { CalendarPage } from './pages/Centre/CalendarPage'
 
 function App() {
   return (

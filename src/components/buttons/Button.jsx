@@ -16,6 +16,7 @@ export const Button = ({className, type, variant, onClick, disabled, isLink, hre
         to={href}
         target={target}
         rel={target === "_blank" ? "noreferrer" : undefined}
+        onClick={onClick}
       >
         {children}
       </Link>

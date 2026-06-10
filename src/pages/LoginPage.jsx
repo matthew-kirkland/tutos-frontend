@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
-import { FormField } from "../component/form/FormField";
-import { Button } from "../component/buttons/Button";
+import { FormField } from "../components/form/FormField";
+import { Button } from "../components/buttons/Button";
 import { useNavigate } from "react-router-dom";
 import { requestPost } from "../utils/helpers.js";
 import { AuthContext } from "../context/AuthContext";

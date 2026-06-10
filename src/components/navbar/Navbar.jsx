@@ -45,7 +45,7 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="h-[64px] fixed top-0 right-0 left-0 flex justify-between px-4 bg-theme">
+    <div className="h-[64px] fixed top-0 right-0 left-0 z-50 flex justify-between px-4 bg-theme">
       <NavbarContentGroup>
         <img src={logo} alt="Logo" />
       </NavbarContentGroup>
