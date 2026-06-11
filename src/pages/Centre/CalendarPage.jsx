@@ -37,7 +37,7 @@ export const CalendarPage = () => {
         );
         setEvents(sessionsByClass.flat());
       } catch (err) {
-        console.error("Failed to load sessions:", err);
+        console.log("Failed to load sessions:", err);
       }
     };
     fetchSessions();
