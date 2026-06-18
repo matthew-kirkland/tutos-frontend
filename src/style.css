@@ -13,6 +13,10 @@ html, body, #root {
   background-color: #74808C;
 }
 
+@utility bg-theme-transparent {
+  background-color: #E6E7FF;
+}
+
 @utility text-theme {
   color: #686DE0;
 }
