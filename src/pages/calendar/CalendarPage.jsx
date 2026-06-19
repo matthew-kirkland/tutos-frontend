@@ -4,7 +4,7 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { requestGet } from "../../utils/helpers";
-import { CalendarToolbar } from "../../components/calendar/CalendarToolbar";
+import { CalendarToolbar } from "./CalendarToolbar";
 import { SessionPopover } from "./SessionPopover";
 
 export const CalendarPage = () => {

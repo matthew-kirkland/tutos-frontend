@@ -3,9 +3,9 @@ import { Navbar } from './components/navbar/Navbar'
 import { LandingPage } from './pages/LandingPage'
 import { LoginPage } from './pages/LoginPage'
 import { Dashboard } from './pages/Dashboard'
-import { UsersPage } from './pages/Centre/UsersPage'
-import { ClassesPage } from './pages/Centre/ClassesPage'
-import { CalendarPage } from './pages/Centre/CalendarPage'
+import { UsersPage } from './pages/users/UsersPage'
+import { ClassesPage } from './pages/classes/ClassesPage'
+import { CalendarPage } from './pages/calendar/CalendarPage'
 
 function App() {
   return (

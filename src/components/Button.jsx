@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { cn } from "../../utils/cn.js";
+import { cn } from "../utils/cn.js";
 
 const variantMap = {
   "primary": "bg-theme text-white hover:primary-hover",
