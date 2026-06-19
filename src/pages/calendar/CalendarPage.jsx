@@ -5,7 +5,7 @@ import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { requestGet } from "../../utils/helpers";
 import { CalendarToolbar } from "../../components/calendar/CalendarToolbar";
-import { SessionPopover } from "../../components/calendar/SessionPopover";
+import { SessionPopover } from "./SessionPopover";
 
 export const CalendarPage = () => {
   const { token } = useContext(AuthContext);
