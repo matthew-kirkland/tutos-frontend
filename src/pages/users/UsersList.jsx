@@ -4,7 +4,7 @@ export const UsersList = ({users, onSelect, selectedUserId}) => {
   return (
     <>
       <div className="row-span-1 col-span-1 border-b border-r border-gray-300">
-        <div className="h-full px-3 mx-2 flex justify-between items-center">
+        <div className="h-full px-5 py-2 flex justify-between items-center">
           <p className="font-light text-gray-700 text-md">Users</p>
           <BsFilterRight className="cursor-pointer" title="Filter" />
         </div>

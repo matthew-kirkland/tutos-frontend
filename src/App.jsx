@@ -19,6 +19,7 @@ function App() {
           <Route path="/users" element={<UsersPage />} />
           <Route path="/users/:userId" element={<UsersPage />} />
           <Route path="/classes" element={<ClassesPage />} />
+          <Route path="/classes/:classId" element={<ClassesPage />} />
           <Route path="/calendar" element={<CalendarPage />} />
         </Routes>
       </main>
