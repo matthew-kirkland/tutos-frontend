@@ -11,6 +11,7 @@ export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const disabled = email.length <= 0 || password.length <= 0;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const body = {
@@ -25,13 +26,15 @@ export const LoginPage = () => {
     } catch (e) {
       console.log(e);
     }
-  }
+  };
+
   return (
     <div className="flex h-full justify-center items-center">
       <div className="w-1/2 h-full flex flex-col justify-center items-center">
         <h1 className="text-theme text-4xl font-medium tracking-wide pb-8">Login</h1>
         <form onSubmit={handleSubmit}>
           <FormField
+            inputClassName="h-[40px] w-[400px] p-2 rounded-md text-sm"
             id="email"
             label="Email"
             type="email"
@@ -40,6 +43,7 @@ export const LoginPage = () => {
             onChangeFn={setEmail}
           />
           <FormField
+            inputClassName="h-[40px] w-[400px] p-2 rounded-md text-sm"
             id="password"
             label="Password"
             type="password"
@@ -51,7 +55,6 @@ export const LoginPage = () => {
             className="flex justify-center ites-center rounded-md cursor-pointer w-full py-2 px-4 text-sm"
             type="submit"
             variant="primary"
-            onClick={() => {}}
             disabled={disabled}
           >
             Login
