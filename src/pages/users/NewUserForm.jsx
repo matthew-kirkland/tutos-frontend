@@ -49,7 +49,7 @@ export const NewUserForm = () => {
     <div className="w-[1000px] flex justify-center items-center">
       <form className="w-full flex flex-col justify-center items-center" onSubmit={handleSubmit}>
         <div className="w-full pb-4">
-          <h3 className="text-lg font-semibold py-4">User Type</h3>
+          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide py-4">User Type</h3>
           <div className="flex justify-between items-center">
             <p>Choose user type</p>
             <select className="w-1/2">
@@ -62,7 +62,7 @@ export const NewUserForm = () => {
           </div>
         </div>
         <div className="w-full pb-4">
-          <h3 className="text-lg font-semibold py-4">User Details</h3>
+          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide py-4">User Details</h3>
           <div className="flex justify-between items-center gap-4">
             <FormField
               wrapperClassName="col-span-2"
@@ -131,7 +131,7 @@ export const NewUserForm = () => {
         {
           showExtraFields &&
           <div className="w-full">
-            <h3 className="text-lg font-semibold pb-4">School details</h3>
+            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide py-4">School details</h3>
             <FormField
               wrapperClassName="col-span-3"
               inputClassName="h-[35px] w-full rounded-md p-2 text-sm"

@@ -21,8 +21,8 @@ export const Button = ({className, type, variant, onClick, disabled, isLink, hre
         {children}
       </Link>
     :
-    <button type={type} disabled={disabled} className={cn(variantMap[variant], className)} onClick={onClick}>
-      {children}
-    </button>
+      <button type={type} disabled={disabled} className={cn(variantMap[variant], className)} onClick={onClick}>
+        {children}
+      </button>
   );
 };
