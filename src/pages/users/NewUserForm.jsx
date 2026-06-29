@@ -5,6 +5,8 @@ import { AuthContext } from "../../context/AuthContext";
 import { Button } from "../../components/Button";
 import { RxChevronDown } from "react-icons/rx";
 import { FormSelect } from "../../components/FormSelect";
+import PhoneInput from "react-phone-number-input";
+import 'react-phone-number-input/style.css';
 
 export const NewUserForm = () => {
   const {token} = useContext(AuthContext);
@@ -16,7 +18,7 @@ export const NewUserForm = () => {
   const [nameLast, setNameLast] = useState("");
   const [dob, setDob] = useState("");
   
-  const [userType, setUserType] = useState("Master");
+  const [userType, setUserType] = useState("Student");
   const showExtraFields = (userType === "Master" || userType === "Student");
   const [school, setSchool] = useState("");
   const [schoolYear, setSchoolYear] = useState("");
@@ -51,15 +53,15 @@ export const NewUserForm = () => {
     <div className="w-[1000px] flex justify-center items-center">
       <form className="w-full flex flex-col justify-center items-center" onSubmit={handleSubmit}>
         <div className="w-full pb-4">
-          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide py-4">User Type</h3>
+          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide py-2">User Type</h3>
           <div className="flex justify-between items-center relative">
-            <p>Choose user type</p>
+            <p className="text-gray-400 text-sm">Select user type</p>
             <FormSelect
               options={["Student", "Parent", "Tutor", "Admin", "Master"]}
               value={userType}
               onChange={setUserType}
               placeholder="Select user type"
-              wrapperClassName="w-1/2"
+              wrapperClassName="w-3/4"
               buttonClassName="w-full h-[38px] bg-white border border-gray-300 rounded-md px-3 flex items-center justify-between text-sm cursor-pointer hover:bg-gray-50"
               menuClassName="w-full bg-white border border-gray-200 rounded-md max-h-60 overflow-auto p-1"
               optionClassName="px-3 py-2 text-sm rounded-md cursor-pointer text-gray-700 hover:bg-gray-50"
@@ -67,27 +69,30 @@ export const NewUserForm = () => {
           </div>
         </div>
         <div className="w-full pb-4">
-          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide py-4">User Details</h3>
-          <div className="flex justify-between items-center gap-4">
-            <FormField
-              inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
-              id="nameFirst"
-              type="text"
-              placeholder="First Name"
-              value={nameFirst}
-              onChangeFn={setNameFirst}
-            />
-            <FormField
-              inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
-              id="nameLast"
-              type="text"
-              placeholder="Last Name"
-              value={nameLast}
-              onChangeFn={setNameLast}
-            />
+          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide py-2">User Details</h3>
+          <div className="flex flex-col justify-between items-start">
+            <p className="text-sm font-gray-400 mb-1">Name</p>
+            <div className="w-full flex justify-between items-center gap-4">
+              <FormField
+                inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
+                id="nameFirst"
+                type="text"
+                placeholder="First Name"
+                value={nameFirst}
+                onChangeFn={setNameFirst}
+              />
+              <FormField
+                inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
+                id="nameLast"
+                type="text"
+                placeholder="Last Name"
+                value={nameLast}
+                onChangeFn={setNameLast}
+              />
+            </div>
           </div>
           <FormField
-            inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
+            inputClassName="h-[35px] w-full rounded-md mt-1 p-2 text-sm"
             id="email"
             label="Email"
             type="email"
@@ -96,7 +101,7 @@ export const NewUserForm = () => {
             onChangeFn={setEmail}
           />
           <FormField
-            inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
+            inputClassName="h-[35px] w-full rounded-md mt-1 p-2 text-sm"
             id="password"
             label="Password"
             type="password"
@@ -104,24 +109,18 @@ export const NewUserForm = () => {
             value={password}
             onChangeFn={setPassword}
           />
-          <div className="flex justify-between items-center gap-4">
-            <select>
-              <option>+61</option>
-              <option>+1</option>
-              <option>+44</option>
-            </select>
-            <FormField
-              inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
-              id="phone"
-              label="Phone Number"
-              type="tel"
-              placeholder="Phone Number"
+          <div className="w-full flex flex-col items-start mb-4">
+            <p className="text-sm mb-1">Phone Number</p>
+            <PhoneInput
+              international={true}
+              defaultCountry="AU"
+              placeholder="Enter phone number"
               value={phone}
-              onChangeFn={setPhone}
+              onChange={setPhone}
             />
           </div>
           <FormField
-            inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
+            inputClassName="h-[35px] w-full rounded-md mt-1 p-2 text-sm text-gray-400"
             id="dob"
             label="Date of Birth"
             type="date"
@@ -135,7 +134,7 @@ export const NewUserForm = () => {
           <div className="w-full">
             <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide py-4">School details</h3>
             <FormField
-              inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
+              inputClassName="h-[35px] w-full rounded-md mt-1 p-2 text-sm"
               id="school"
               label="School"
               type="text"
@@ -144,7 +143,7 @@ export const NewUserForm = () => {
               onChangeFn={setSchool}
             />
             <FormField
-              inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
+              inputClassName="h-[35px] w-full rounded-md mt-1 p-2 text-sm"
               id="schoolYear"
               label="School Year"
               type="number"

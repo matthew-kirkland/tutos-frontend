@@ -60,3 +60,23 @@ html, body, #root {
 .fc .fc-event * {
   cursor: pointer;
 }
+
+/* --- PhoneInput customisation --- */
+
+.PhoneInput {
+  @apply flex items-center w-full rounded-md border border-gray-300 focus:border-theme overflow-hidden bg-white;
+}
+
+/* The country select wrapper wrapper */
+.PhoneInputCountry {
+  @apply h-[35px] bg-gray-50 px-3 border-r border-gray-300 flex items-center gap-1 cursor-pointer hover:bg-gray-100;
+}
+
+/* The native select element inside the wrapper (hidden visually, manages native click) */
+.PhoneInputCountrySelect {
+  @apply cursor-pointer;
+}
+
+.PhoneInputInput {
+  @apply h-[35px] w-full px-3 text-sm bg-transparent outline-none text-gray-900 placeholder-gray-400;
+}

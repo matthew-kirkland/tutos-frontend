@@ -5,8 +5,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Modal } from "../../components/Modal";
 import { UsersList } from "./UsersList";
 import { UserDisplay } from "./UserDisplay";
-import { NewUserButton } from "./NewUserButton";
 import { NewUserForm } from "./NewUserForm";
+import { Button } from "../../components/Button";
+import { FaPlus } from "react-icons/fa";
 
 export const UsersPage = () => {
   const {token} = useContext(AuthContext);
@@ -34,7 +35,16 @@ export const UsersPage = () => {
         <div className="grid grid-rows-24 grid-cols-6 grid-flow-col h-full w-full">
           <UsersList users={users} onSelect={setSelectedUser} selectedUserId={userId} />
           <UserDisplay user={selectedUser} />
-          <NewUserButton onClick={() => setShowModal(true)} />
+          <Button
+            className="fixed bottom-10 right-10 px-4 py-2 rounded-md shadow-lg cursor-pointer"
+            variant="primary"
+            onClick={() => setShowModal(true)}
+          >
+            <div className="flex justify-between items-center gap-4">
+              <p>New user</p>
+              <FaPlus />
+            </div>
+          </Button>
         </div>
       </div>
       {
