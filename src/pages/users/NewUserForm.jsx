@@ -3,6 +3,8 @@ import { FormField } from "../../components/FormField";
 import { requestPost } from "../../utils/helpers";
 import { AuthContext } from "../../context/AuthContext";
 import { Button } from "../../components/Button";
+import { RxChevronDown } from "react-icons/rx";
+import { FormSelect } from "../../components/FormSelect";
 
 export const NewUserForm = () => {
   const {token} = useContext(AuthContext);
@@ -14,8 +16,8 @@ export const NewUserForm = () => {
   const [nameLast, setNameLast] = useState("");
   const [dob, setDob] = useState("");
   
-  const [userType, setUserType] = useState("master");
-  const showExtraFields = (userType === "master" || userType === "student");
+  const [userType, setUserType] = useState("Master");
+  const showExtraFields = (userType === "Master" || userType === "Student");
   const [school, setSchool] = useState("");
   const [schoolYear, setSchoolYear] = useState("");
 
@@ -35,7 +37,7 @@ export const NewUserForm = () => {
     }
 
     try {
-      const data = await requestPost(`/auth/register/${userType}`, body, token);
+      const data = await requestPost(`/auth/register/${userType.toLowerCase()}`, body, token);
       // do something when the new user is created:
       // - update the users list
       // - set the UserDisplay to show the new user
@@ -50,22 +52,24 @@ export const NewUserForm = () => {
       <form className="w-full flex flex-col justify-center items-center" onSubmit={handleSubmit}>
         <div className="w-full pb-4">
           <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide py-4">User Type</h3>
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center relative">
             <p>Choose user type</p>
-            <select className="w-1/2">
-              <option>Student</option>
-              <option>Parent</option>
-              <option>Tutor</option>
-              <option>Admin</option>
-              <option>Master</option>
-            </select>
+            <FormSelect
+              options={["Student", "Parent", "Tutor", "Admin", "Master"]}
+              value={userType}
+              onChange={setUserType}
+              placeholder="Select user type"
+              wrapperClassName="w-1/2"
+              buttonClassName="w-full h-[38px] bg-white border border-gray-300 rounded-md px-3 flex items-center justify-between text-sm cursor-pointer hover:bg-gray-50"
+              menuClassName="w-full bg-white border border-gray-200 rounded-md max-h-60 overflow-auto p-1"
+              optionClassName="px-3 py-2 text-sm rounded-md cursor-pointer text-gray-700 hover:bg-gray-50"
+            />
           </div>
         </div>
         <div className="w-full pb-4">
           <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide py-4">User Details</h3>
           <div className="flex justify-between items-center gap-4">
             <FormField
-              wrapperClassName="col-span-2"
               inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
               id="nameFirst"
               type="text"
@@ -74,7 +78,6 @@ export const NewUserForm = () => {
               onChangeFn={setNameFirst}
             />
             <FormField
-              wrapperClassName="col-span-2"
               inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
               id="nameLast"
               type="text"
@@ -118,7 +121,6 @@ export const NewUserForm = () => {
             />
           </div>
           <FormField
-            wrapperClassName="col-span-3"
             inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
             id="dob"
             label="Date of Birth"
@@ -133,7 +135,6 @@ export const NewUserForm = () => {
           <div className="w-full">
             <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide py-4">School details</h3>
             <FormField
-              wrapperClassName="col-span-3"
               inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
               id="school"
               label="School"
@@ -143,7 +144,6 @@ export const NewUserForm = () => {
               onChangeFn={setSchool}
             />
             <FormField
-              wrapperClassName="col-span-3"
               inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
               id="schoolYear"
               label="School Year"
