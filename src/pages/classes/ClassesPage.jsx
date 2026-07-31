@@ -26,8 +26,8 @@ export const ClassesPage = () => {
   }, [token]);
 
   return (
-    <div className="flex h-full justify-between items-center">
-      <div className="grid grid-rows-24 grid-cols-6 grid-flow-col h-full w-full">
+    <div className="flex h-full min-h-0 justify-between items-center">
+      <div className="grid grid-rows-24 grid-cols-6 grid-flow-col h-full min-h-0 w-full">
         <ClassesList classes={classes} onSelect={setSelectedClass} selectedClassId={classId} />
         <ClassDisplay clazz={selectedClass} />
       </div>

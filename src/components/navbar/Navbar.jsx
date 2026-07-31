@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { NavbarContentGroup } from "./NavbarContentGroup";
 import { Button } from "../Button";
-import logo from "../../assets/logo.svg";
+import logo from "../../../public/favicon.svg";
 import { AuthContext } from "../../context/AuthContext";
 
 export const Navbar = () => {

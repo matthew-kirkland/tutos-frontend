@@ -1,3 +1,5 @@
+import { BsCardText, BsTag } from "react-icons/bs";
+
 export const ClassDisplay = ({clazz}) => {
   return (
     <>
@@ -6,13 +8,23 @@ export const ClassDisplay = ({clazz}) => {
           <p className="font-light text-gray-700 text-md">{clazz ? clazz.title : ""}</p>
         </div>
       </div>
-      <div className="row-span-23 col-span-5 flex h-full w-full justify-center items-center">
-        <div>
-          {clazz ? clazz.title : ""}
-        </div>
-        <div>
-          {clazz ? clazz.description : ""}
-        </div>
+      <div className="row-span-23 col-span-5 h-full w-full overflow-auto">
+        {
+          clazz &&
+          <div className="max-w-xl mx-auto px-8 py-8">
+            <div className="flex items-center justify-between pb-4 border-b border-gray-200">
+              <h1 className="text-2xl font-semibold text-gray-900">{clazz.title}</h1>
+              <span className="flex items-center gap-1 text-xs font-medium bg-gray-200 text-gray-600 px-2 py-1 rounded">
+                <BsTag />
+                type
+              </span>
+            </div>
+            <div className="flex items-start gap-2 text-sm text-gray-600 mt-4">
+              <BsCardText className="text-gray-400 mt-0.5" />
+              <p>{clazz.description}</p>
+            </div>
+          </div>
+        }
       </div>
     </>
   );

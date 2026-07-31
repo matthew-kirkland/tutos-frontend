@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="flex flex-col h-dvh">
       <Navbar />
-      <main className="flex flex-col h-full mt-[64px] bg-gray-50">
+      <main className="flex flex-col h-[calc(100dvh-64px)] mt-[64px] bg-gray-50">
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />

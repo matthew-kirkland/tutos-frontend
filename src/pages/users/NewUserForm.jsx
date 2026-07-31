@@ -1,14 +1,13 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { FormField } from "../../components/FormField";
 import { requestPost } from "../../utils/helpers";
 import { AuthContext } from "../../context/AuthContext";
-import { Button } from "../../components/Button";
 import { RxChevronDown } from "react-icons/rx";
 import { FormSelect } from "../../components/FormSelect";
 import PhoneInput from "react-phone-number-input";
 import 'react-phone-number-input/style.css';
 
-export const NewUserForm = () => {
+export const NewUserForm = ({formId, onValidityChange, onCreated}) => {
   const {token} = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
@@ -17,11 +16,19 @@ export const NewUserForm = () => {
   const [nameFirst, setNameFirst] = useState("");
   const [nameLast, setNameLast] = useState("");
   const [dob, setDob] = useState("");
-  
   const [userType, setUserType] = useState("Student");
   const showExtraFields = (userType === "Master" || userType === "Student");
   const [school, setSchool] = useState("");
   const [schoolYear, setSchoolYear] = useState("");
+
+  const isValid = Boolean(
+    email && password && phone && nameFirst && nameLast && dob
+    && (!showExtraFields || (school && schoolYear))
+  );
+
+  useEffect(() => {
+    onValidityChange?.(isValid);
+  }, [isValid, onValidityChange]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,10 +47,7 @@ export const NewUserForm = () => {
 
     try {
       const data = await requestPost(`/auth/register/${userType.toLowerCase()}`, body, token);
-      // do something when the new user is created:
-      // - update the users list
-      // - set the UserDisplay to show the new user
-      // - green popup saying ok
+      onCreated?.(data);
     } catch (e) {
       console.log(e);
     }
@@ -51,7 +55,7 @@ export const NewUserForm = () => {
 
   return (
     <div className="w-[1000px] flex justify-center items-center">
-      <form className="w-full flex flex-col justify-center items-center" onSubmit={handleSubmit}>
+      <form id={formId} className="w-full flex flex-col justify-center items-center" onSubmit={handleSubmit}>
         <div className="w-full pb-4">
           <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide py-2">User Type</h3>
           <div className="flex justify-between items-center relative">
@@ -113,6 +117,8 @@ export const NewUserForm = () => {
             <p className="text-sm mb-1">Phone Number</p>
             <PhoneInput
               international={true}
+              countryCallingCodeEditable={false}
+              limitMaxLength={true}
               defaultCountry="AU"
               placeholder="Enter phone number"
               value={phone}
@@ -153,13 +159,6 @@ export const NewUserForm = () => {
             />
           </div>
         }
-        <Button
-          className="px-4 py-2 rounded-md text-sm cursor-pointer"
-          type="submit"
-          variant="primary"
-        >
-          Create
-        </Button>
       </form>
     </div>
   );
