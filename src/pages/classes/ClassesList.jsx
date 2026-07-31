@@ -1,4 +1,5 @@
 import { BsFilterRight } from "react-icons/bs";
+import { LIST_CARD_HEIGHT } from "../../utils/listCard.js";
 
 export const ClassesList = ({classes, onSelect, selectedClassId}) => {
   return (
@@ -14,14 +15,14 @@ export const ClassesList = ({classes, onSelect, selectedClassId}) => {
           <div
             key={c.classId}
             onClick={() => onSelect(c.classId)}
-            className={`flex flex-col gap-1 px-3 py-2 mx-2 rounded-md ${c.classId === selectedClassId ? "bg-theme-transparent" : "hover:bg-gray-100"} cursor-pointer`}
+            className={`flex flex-col justify-center gap-1 ${LIST_CARD_HEIGHT} shrink-0 px-3 py-2 mx-2 rounded-md ${c.classId === selectedClassId ? "bg-theme-transparent" : "hover:bg-gray-100"} cursor-pointer`}
           >
             <div className="flex flex-row items-center gap-2 justify-between">
-              <p className="font-medium text-lg text-gray-900">{c.title}</p>
-              <span className="text-xs bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">group</span>
+              <p className="font-medium text-lg text-gray-900 truncate min-w-0">{c.title}</p>
+              <span className="shrink-0 text-xs bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">group</span>
             </div>
-            <div className="flex flex-row items-center gap-2 text-sm text-gray-500">
-              <p>{c.description}</p>
+            <div className="flex flex-row items-center gap-2 text-sm text-gray-500 min-w-0">
+              <p className="truncate min-w-0">{c.description}</p>
             </div>
           </div>
         ))}

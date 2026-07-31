@@ -2,10 +2,28 @@ import { useContext, useEffect, useState } from "react"
 import { FormField } from "../../components/FormField";
 import { requestPost } from "../../utils/helpers";
 import { AuthContext } from "../../context/AuthContext";
-import { RxChevronDown } from "react-icons/rx";
 import { FormSelect } from "../../components/FormSelect";
+import { cn } from "../../utils/cn.js";
 import PhoneInput from "react-phone-number-input";
 import 'react-phone-number-input/style.css';
+
+const FormStage = ({index, title, description, isLast, children}) => (
+  <div className="flex gap-4">
+    <div className="flex flex-col items-center">
+      <div className="flex items-center justify-center w-7 h-7 rounded-full bg-theme text-white text-xs font-semibold shrink-0">
+        {index}
+      </div>
+      {!isLast && <div className="w-px flex-1 bg-gray-200 mt-2" />}
+    </div>
+    <div className={cn("flex-1 min-w-0", !isLast && "pb-6")}>
+      <h3 className="text-sm font-semibold text-gray-900">{title}</h3>
+      {description && <p className="text-xs text-gray-400 mt-0.5 mb-3">{description}</p>}
+      <div className="flex flex-col gap-3">
+        {children}
+      </div>
+    </div>
+  </div>
+);
 
 export const NewUserForm = ({formId, onValidityChange, onCreated}) => {
   const {token} = useContext(AuthContext);
@@ -54,49 +72,57 @@ export const NewUserForm = ({formId, onValidityChange, onCreated}) => {
   };
 
   return (
-    <div className="w-[1000px] flex justify-center items-center">
-      <form id={formId} className="w-full flex flex-col justify-center items-center" onSubmit={handleSubmit}>
-        <div className="w-full pb-4">
-          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide py-2">User Type</h3>
-          <div className="flex justify-between items-center relative">
-            <p className="text-gray-400 text-sm">Select user type</p>
-            <FormSelect
-              options={["Student", "Parent", "Tutor", "Admin", "Master"]}
-              value={userType}
-              onChange={setUserType}
-              placeholder="Select user type"
-              wrapperClassName="w-3/4"
-              buttonClassName="w-full h-[38px] bg-white border border-gray-300 rounded-md px-3 flex items-center justify-between text-sm cursor-pointer hover:bg-gray-50"
-              menuClassName="w-full bg-white border border-gray-200 rounded-md max-h-60 overflow-auto p-1"
-              optionClassName="px-3 py-2 text-sm rounded-md cursor-pointer text-gray-700 hover:bg-gray-50"
+    <div className="w-[600px]">
+      <form id={formId} className="w-full flex flex-col" onSubmit={handleSubmit}>
+        <FormStage
+          index={1}
+          title="User type"
+          description="What kind of account is this?"
+          isLast={false}
+        >
+          <FormSelect
+            options={["Student", "Parent", "Tutor", "Admin", "Master"]}
+            value={userType}
+            onChange={setUserType}
+            placeholder="Select user type"
+            wrapperClassName="w-full"
+            buttonClassName="w-full h-[38px] bg-white border border-gray-300 rounded-md px-3 flex items-center justify-between text-sm cursor-pointer hover:bg-gray-50"
+            menuClassName="w-full bg-white border border-gray-200 rounded-md max-h-60 overflow-auto p-1"
+            optionClassName="px-3 py-2 text-sm rounded-md cursor-pointer text-gray-700 hover:bg-gray-50"
+          />
+        </FormStage>
+
+        <FormStage
+          index={2}
+          title="Basic details"
+          description="Who is this account for, and how will they sign in?"
+          isLast={!showExtraFields}
+        >
+          <div className="w-full flex gap-3">
+            <FormField
+              wrapperClassName="mb-0"
+              inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
+              id="nameFirst"
+              label="First Name"
+              type="text"
+              placeholder="First Name"
+              value={nameFirst}
+              onChangeFn={setNameFirst}
+            />
+            <FormField
+              wrapperClassName="mb-0"
+              inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
+              id="nameLast"
+              label="Last Name"
+              type="text"
+              placeholder="Last Name"
+              value={nameLast}
+              onChangeFn={setNameLast}
             />
           </div>
-        </div>
-        <div className="w-full pb-4">
-          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide py-2">User Details</h3>
-          <div className="flex flex-col justify-between items-start">
-            <p className="text-sm font-gray-400 mb-1">Name</p>
-            <div className="w-full flex justify-between items-center gap-4">
-              <FormField
-                inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
-                id="nameFirst"
-                type="text"
-                placeholder="First Name"
-                value={nameFirst}
-                onChangeFn={setNameFirst}
-              />
-              <FormField
-                inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
-                id="nameLast"
-                type="text"
-                placeholder="Last Name"
-                value={nameLast}
-                onChangeFn={setNameLast}
-              />
-            </div>
-          </div>
           <FormField
-            inputClassName="h-[35px] w-full rounded-md mt-1 p-2 text-sm"
+            wrapperClassName="mb-0"
+            inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
             id="email"
             label="Email"
             type="email"
@@ -105,7 +131,8 @@ export const NewUserForm = ({formId, onValidityChange, onCreated}) => {
             onChangeFn={setEmail}
           />
           <FormField
-            inputClassName="h-[35px] w-full rounded-md mt-1 p-2 text-sm"
+            wrapperClassName="mb-0"
+            inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
             id="password"
             label="Password"
             type="password"
@@ -113,7 +140,7 @@ export const NewUserForm = ({formId, onValidityChange, onCreated}) => {
             value={password}
             onChangeFn={setPassword}
           />
-          <div className="w-full flex flex-col items-start mb-4">
+          <div className="w-full flex flex-col items-start">
             <p className="text-sm mb-1">Phone Number</p>
             <PhoneInput
               international={true}
@@ -126,7 +153,8 @@ export const NewUserForm = ({formId, onValidityChange, onCreated}) => {
             />
           </div>
           <FormField
-            inputClassName="h-[35px] w-full rounded-md mt-1 p-2 text-sm text-gray-400"
+            wrapperClassName="mb-0"
+            inputClassName="h-[35px] w-full rounded-md p-2 text-sm text-gray-400"
             id="dob"
             label="Date of Birth"
             type="date"
@@ -134,13 +162,19 @@ export const NewUserForm = ({formId, onValidityChange, onCreated}) => {
             value={dob}
             onChangeFn={setDob}
           />
-        </div>
+        </FormStage>
+
         {
           showExtraFields &&
-          <div className="w-full">
-            <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide py-4">School details</h3>
+          <FormStage
+            index={3}
+            title="School details"
+            description="Only needed for students and masters."
+            isLast={true}
+          >
             <FormField
-              inputClassName="h-[35px] w-full rounded-md mt-1 p-2 text-sm"
+              wrapperClassName="mb-0"
+              inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
               id="school"
               label="School"
               type="text"
@@ -149,7 +183,8 @@ export const NewUserForm = ({formId, onValidityChange, onCreated}) => {
               onChangeFn={setSchool}
             />
             <FormField
-              inputClassName="h-[35px] w-full rounded-md mt-1 p-2 text-sm"
+              wrapperClassName="mb-0"
+              inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
               id="schoolYear"
               label="School Year"
               type="number"
@@ -157,7 +192,7 @@ export const NewUserForm = ({formId, onValidityChange, onCreated}) => {
               value={schoolYear}
               onChangeFn={setSchoolYear}
             />
-          </div>
+          </FormStage>
         }
       </form>
     </div>

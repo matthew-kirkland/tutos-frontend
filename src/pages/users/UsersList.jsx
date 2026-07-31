@@ -1,4 +1,5 @@
 import { BsEnvelopeAt, BsFilterRight, BsTelephone } from "react-icons/bs";
+import { LIST_CARD_HEIGHT } from "../../utils/listCard.js";
 
 export const UsersList = ({users, onSelect, selectedUserId}) => {
   return (
@@ -14,19 +15,19 @@ export const UsersList = ({users, onSelect, selectedUserId}) => {
           <div
             key={u.userId}
             onClick={() => onSelect(u.userId)}
-            className={`flex flex-col gap-1 px-3 py-2 mx-2 rounded-md ${u.userId === selectedUserId ? "bg-theme-transparent" : "hover:bg-gray-100"} cursor-pointer`}
+            className={`flex flex-col justify-center gap-1 ${LIST_CARD_HEIGHT} shrink-0 px-3 py-2 mx-2 rounded-md ${u.userId === selectedUserId ? "bg-theme-transparent" : "hover:bg-gray-100"} cursor-pointer`}
           >
             <div className="flex flex-row items-center gap-2 justify-between">
-              <p className="font-medium text-lg text-gray-900">{u.nameFirst} {u.nameLast}</p>
-              <span className="text-xs bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">role</span>
+              <p className="font-medium text-lg text-gray-900 truncate min-w-0">{u.nameFirst} {u.nameLast}</p>
+              <span className="shrink-0 text-xs bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">role</span>
             </div>
-            <div className="flex flex-row items-center gap-2 text-sm text-gray-500">
-              <BsEnvelopeAt />
-              <p>{u.email}</p>
+            <div className="flex flex-row items-center gap-2 text-sm text-gray-500 min-w-0">
+              <BsEnvelopeAt className="shrink-0" />
+              <p className="truncate min-w-0">{u.email}</p>
             </div>
-            <div className="flex flex-row items-center gap-2 text-sm text-gray-500">
-              <BsTelephone />
-              <p>{u.phone}</p>
+            <div className="flex flex-row items-center gap-2 text-sm text-gray-500 min-w-0">
+              <BsTelephone className="shrink-0" />
+              <p className="truncate min-w-0">{u.phone}</p>
             </div>
           </div>
         ))}
