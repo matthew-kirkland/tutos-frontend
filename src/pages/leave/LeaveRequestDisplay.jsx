@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BsCalendarRange, BsPeople } from "react-icons/bs";
 import { FormSelect } from "../../components/FormSelect";
 import { Button } from "../../components/Button";
-import { Stepper } from "./Stepper";
+import { FormStage } from "../../components/FormStage";
 import { MOCK_TUTORS } from "./mockLeaveData";
 import { STATUS_META, formatDateRange, formatSessionDate, getSteps } from "./leaveUtils.js";
 import { cn } from "../../utils/cn.js";
@@ -74,7 +74,18 @@ export const LeaveRequestDisplay = ({request, onUpdate, onNotify}) => {
           </div>
 
           <div className="rounded-lg px-6 py-5 bg-gray-100">
-            <Stepper steps={steps} />
+            <div className="flex items-start w-full">
+              {steps.map((step, i) => (
+                <FormStage
+                  key={step.label}
+                  orientation="horizontal"
+                  index={i + 1}
+                  title={step.label}
+                  state={step.state}
+                  isLast={i === steps.length - 1}
+                />
+              ))}
+            </div>
           </div>
 
           {
