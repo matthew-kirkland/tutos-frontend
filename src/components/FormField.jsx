@@ -10,7 +10,7 @@ export const FormField = ({wrapperClassName, inputClassName, id, label, type, pl
         placeholder={placeholder}
         value={value}
         onChange={e => onChangeFn(e.target.value)}
-        className={cn("border border-gray-300 focus:border-theme", inputClassName)}
+        className={cn("border border-gray-300 focus:border-theme focus:outline-none", inputClassName)}
       />
     </div>
   );

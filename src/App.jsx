@@ -6,6 +6,7 @@ import { Dashboard } from './pages/Dashboard'
 import { UsersPage } from './pages/users/UsersPage'
 import { ClassesPage } from './pages/classes/ClassesPage'
 import { CalendarPage } from './pages/calendar/CalendarPage'
+import { LeaveManagementPage } from './pages/leave/LeaveManagementPage'
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
           <Route path="/classes" element={<ClassesPage />} />
           <Route path="/classes/:classId" element={<ClassesPage />} />
           <Route path="/calendar" element={<CalendarPage />} />
+          <Route path="/leave-management" element={<LeaveManagementPage />} />
+          <Route path="/leave-management/:leaveId" element={<LeaveManagementPage />} />
         </Routes>
       </main>
     </div>

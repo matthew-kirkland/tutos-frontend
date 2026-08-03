@@ -40,9 +40,11 @@ html, body, #root {
   @apply text-sm font-semibold text-black uppercase tracking-wide;
 }
 
-/* Today cell — override FullCalendar's default yellow */
-.fc .fc-daygrid-day.fc-day-today {
-  @apply bg-[#E6E7FF];
+/* Today cell — override FullCalendar's default yellow.
+   FullCalendar colours every view's today cell (month/week/day/list) from this
+   one CSS variable, so overriding it here covers all views instead of just dayGrid. */
+.fc {
+  --fc-today-bg-color: var(--color-theme-transparent);
 }
 
 /* Day numbers */
