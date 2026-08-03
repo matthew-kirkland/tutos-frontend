@@ -54,7 +54,7 @@ export const NewUserForm = ({formId, onValidityChange, onCreated}) => {
   };
 
   return (
-    <div className="w-[600px]">
+    <div className="w-[800px]">
       <form id={formId} className="w-full flex flex-col" onSubmit={handleSubmit}>
         <FormStage
           index={1}
@@ -136,7 +136,7 @@ export const NewUserForm = ({formId, onValidityChange, onCreated}) => {
           </div>
           <FormField
             wrapperClassName="mb-0"
-            inputClassName="h-[35px] w-full rounded-md p-2 text-sm text-gray-400"
+            inputClassName="h-[35px] w-full rounded-md p-2 text-sm"
             id="dob"
             label="Date of Birth"
             type="date"
