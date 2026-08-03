@@ -6,7 +6,7 @@ import { FormStage } from "../../components/FormStage";
 import { Button } from "../../components/Button";
 import { cn } from "../../utils/cn.js";
 
-const TIME_INPUT_CLASS = "h-[35px] w-full rounded-md border border-gray-300 focus:border-theme p-2 text-sm";
+const TIME_INPUT_CLASS = "h-[35px] w-full rounded-md border border-gray-300 focus:border-theme focus:outline-none p-2 text-sm";
 
 const formatSessionDate = (dateStr) =>
   new Date(`${dateStr}T00:00:00`).toLocaleDateString(undefined, {
