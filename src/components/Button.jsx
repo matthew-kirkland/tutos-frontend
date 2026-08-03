@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { cn } from "../../utils/cn.js";
+import { cn } from "../utils/cn.js";
 
 const variantMap = {
   "primary": "bg-theme text-white hover:primary-hover",
@@ -7,7 +7,7 @@ const variantMap = {
   "transparent": "bg-transparent text-black hover:bg-gray-100"
 };
 
-export const Button = ({className, type, variant, onClick, disabled, isLink, href, target, children}) => {
+export const Button = ({className, type, variant, onClick, disabled, isLink, href, target, form, children}) => {
   return (
     isLink
     ?
@@ -21,8 +21,14 @@ export const Button = ({className, type, variant, onClick, disabled, isLink, hre
         {children}
       </Link>
     :
-    <button type={type} disabled={disabled} className={cn(variantMap[variant], className)} onClick={onClick}>
-      {children}
-    </button>
+      <button
+        type={type}
+        form={form}
+        disabled={disabled}
+        className={cn(variantMap[variant], className, disabled && "opacity-50 cursor-not-allowed")}
+        onClick={onClick}
+      >
+        {children}
+      </button>
   );
 };

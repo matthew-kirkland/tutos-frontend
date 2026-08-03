@@ -5,28 +5,13 @@ html, body, #root {
   font-family: "Inter";
 }
 
-@utility bg-theme {
-  background-color: #686DE0;
-}
+@theme {
+  --color-theme: #686DE0;
+  --color-theme-disabled: #74808C;
+  --color-theme-transparent: #E6E7FF;
 
-@utility bg-theme-disabled {
-  background-color: #74808C;
-}
-
-@utility text-theme {
-  color: #686DE0;
-}
-
-@utility border-theme {
-  border-color: #686DE0;
-}
-
-@utility primary-hover {
-  background-color: #555AB8;
-}
-
-@utility secondary-hover {
-  background-color: #F3F4F6;
+  --color-primary-hover: #555AB8;
+  --color-secondary-hover: #F3F4F6;
 }
 
 /* --- FullCalendar customisation ---
@@ -47,7 +32,7 @@ html, body, #root {
 .fc .fc-button-primary:not(:disabled):hover,
 .fc .fc-button-primary:not(:disabled):active,
 .fc .fc-button-primary:not(:disabled).fc-button-active {
-  @apply primary-hover border-[#555AB8];
+  @apply bg-primary-hover border-[#555AB8];
 }
 
 /* Day-of-week header row */
@@ -74,4 +59,24 @@ html, body, #root {
 .fc .fc-event,
 .fc .fc-event * {
   cursor: pointer;
+}
+
+/* --- PhoneInput customisation --- */
+
+.PhoneInput {
+  @apply flex items-center w-full rounded-md border border-gray-300 focus:border-theme overflow-hidden bg-white;
+}
+
+/* The country select wrapper wrapper */
+.PhoneInputCountry {
+  @apply h-[35px] bg-gray-50 px-3 border-r border-gray-300 flex items-center gap-1 cursor-pointer hover:bg-gray-100;
+}
+
+/* The native select element inside the wrapper (hidden visually, manages native click) */
+.PhoneInputCountrySelect {
+  @apply cursor-pointer;
+}
+
+.PhoneInputInput {
+  @apply h-[35px] w-full px-3 text-sm bg-transparent outline-none text-gray-900 placeholder-gray-400;
 }
