@@ -133,7 +133,7 @@ export const Navbar = () => {
         {
           (token !== "") &&
           <Button
-            className="flex justify-center items-center rounded-md cursor-pointer min-w-24 py-2 px-2 text-sm shadow-lg"
+            className="flex justify-center items-center rounded-md cursor-pointer min-w-24 py-2 px-2 text-sm"
             variant="secondary"
             onClick={handleLogout}
             disabled={false}
